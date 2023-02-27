@@ -119,7 +119,7 @@ body{
 .header-links.current::after {
   
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   width: 100%;
   height: 4px;
@@ -139,6 +139,7 @@ body{
          display: block;
 
         padding: 24px 0;
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
                
 }
 .header-links:active,
@@ -163,6 +164,7 @@ body{
 
     display: block;
     padding: 24px 0;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
    
@@ -221,6 +223,7 @@ margin: 0 auto;
       cursor: pointer;
       font-size: 16px;
       padding: 16px 32px;
+      transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     
       
 
@@ -414,6 +417,7 @@ padding-top: 0;
                 height: 40px;
                 border-radius: 50%;
                 background-color: var(--color-brand);
+                transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
                             
               
         }
@@ -467,6 +471,7 @@ padding-top: 0;
         color: #AFB1B8;
         border: 1px solid #8E8F99;
         border-radius: 4px;
+        transition:  border 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
               
       }
 
@@ -562,6 +567,7 @@ padding-top: 0;
                        border-radius: 50%;
                        width: 40px;
                        height: 40px;
+                      transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
                      
                      }
 
@@ -607,6 +613,7 @@ padding-top: 0;
           border-radius: 4px;
           cursor: pointer;
           padding: 12px 24px;
+          transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); 
       }
 
             .filter-button:hover,
@@ -655,13 +662,19 @@ padding-top: 0;
           background-color: var(--color-brand);
           color: var(--color-background-light);
           transform: translateY(100%);
-          transition: transform 250ms;
+          transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+          
         }
 
         .portfolio-link:hover .portfolio-description {
           transform: translateY(0);
           opacity: 1;
         }
+
+          .portfolio-link:focus .portfolio-description {
+            transform: translateY(0);
+             opacity: 1;
+               }
 
 
         
@@ -676,6 +689,7 @@ padding-top: 0;
         .portfolio-link{
           display: block;
           text-decoration: none;
+          transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
                 .portfolio-link:hover,
@@ -704,9 +718,82 @@ padding-top: 0;
           text-decoration: none;
           letter-spacing: 0.02em;
           line-height: 1.5;
+                             
+        }
+
+        /* Modal */
+
+        .backdrop{
+         
+          position: fixed;
           
+            top: 0;
+            left: 0;
+            display: flex;           
+            justify-content: center;
+            padding: 20px 0;          
+            width: 100%;
+             height: 100%;
+            background-color: gba(46, 47, 66, 0.4); 
+            opacity: 1;
+            transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+        }
+
+        .backdrop.is-hidden{
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+        
+        }
+
+       
+        .modal{
+          position: relative;
+          overflow: auto;
+          width: 100%;
+          max-width: 408px;
+          max-height: 576px;
+          background-color: #FCFCFC;
+         
           
-           
+          transition: transform 500ms;
+        }
+
+                 .backdrop.is-hidden .modal {
+                  transform: scale(0);
+                 }
+
+        .modal-close{
+          position: absolute;
+          top: 24px;
+          right: 24px;
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+              border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 50%;
+                background-color: #E7E9FC;
+                transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1) ;
+
+        
+        }
+
+        .modal-close:hover, .modal-close:focus{
+         
+          background-color: var(--color-pressed-state);
+          border: transparent;
+          color: #FFFFFF;
+        }
+
+        .svg-close{
+          width: 8px;
+          height: 8px;
+          fill: currentColor;
         }
 
 
